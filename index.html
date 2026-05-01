@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personal Profile Page</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="header">
+        <h1>Personal Profile Page</h1>
+        <span class="header-icon">👤</span>
+    </div>
+
+    <div class="container">
+        <div class="left-column">
+            <div class="profile-image">
+                <img src="image.png" alt="Profile Picture">
+            </div>
+            
+            <div class="bio-section">
+                <h2>Bio</h2>
+                <div class="bio-content">
+                    <p>A computer Engineering student (ND completed) and full-stack developer in training,currently an IT student at Sleekabyte Technologies. I enjoy learning new things, and building projects...My goal is to become a better developer and gain more experience by working on more projects and keep learning.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="right-column">
+            <div class="section">
+                <h2>About me</h2>
+                <div class="info-row">
+                    <span class="info-label">Name:</span>
+                    <span class="info-value">Ojo Fathiu</span>
+                </div>
+                <div class="info-row">
+                    <span class="info-label">Age:</span>
+                    <span class="info-value">20 years</span>
+                </div>
+                <div class="info-row">
+                    <span class="info-label">Role:</span>
+                    <span class="info-value">Full-Stack Developer</span>
+                </div>
+                <div class="info-row">
+                    <span class="info-label">Field:</span>
+                    <span class="info-value">Computer Engineering</span>
+                </div>
+                <div class="info-row">
+                    <span class="info-label">Organization:</span>
+                    <span class="info-value">Sleekabyte Technologies</span>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>Contact Info</h2>
+                <div class="info-row">
+                    <span class="info-label">Email:</span>
+                    <a href="mailto:fathiu@sleekabyte.com" class="info-value contact-link">fathiu@sleekabyte.com</a>
+                </div>
+                <div class="info-row">
+                    <span class="info-label">Phone:</span>
+                    <a href="tel:+2347066367372" class="info-value contact-link">+2347066367372</a>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>Connect with me</h2>
+                <div class="social-icons">
+                    <i class="fab fa-x-twitter social-icon" onclick="openSocial('twitter')"></i>
+                    <i class="fab fa-facebook-f social-icon" onclick="openSocial('facebook')"></i>
+                    <i class="fab fa-github social-icon" onclick="openSocial('github')"></i>
+                    <i class="fab fa-linkedin social-icon" onclick="openSocial('linkedin')"></i>
+                </div>
+            </div>
+        </div>
+
+        <div class="portfolio-section">
+            <h2>My Projects</h2>
+            <div class="project-list" id="projectList"></div>
+        </div>
+    </div>
+
+    <div id="projectModal" class="modal" onclick="closeModal(event)">
+        <div class="modal-content" onclick="event.stopPropagation()">
+            <span class="close-btn" onclick="closeModal()">&times;</span>
+            <h3 class="modal-title" id="modalTitle"></h3>
+            <p id="modalDesc"></p>
+            <a id="modalLink" href="#" target="_blank" class="modal-link">View Project</a>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
