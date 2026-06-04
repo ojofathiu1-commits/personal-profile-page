@@ -2,7 +2,8 @@ let projects = [
     { name: "Calculator", desc: "A functional calculator built with HTML, CSS, and JavaScript for basic arithmetic operations", link: "calculator.html" },
     { name: "Note App", desc: "A simple note-taking application built with HTML, CSS, and JavaScript", link: "note.html" },
     { name: "Password Generator", desc: "An interactive password generator that asks 3 questions and suggests a secure password based on user responses", link: "password.html" },
-    { name: "To-Do List", desc: "A simple to-do list application for adding tasks and marking them as completed", link: "todo.html" }
+    { name: "To-Do List", desc: "A simple to-do list application for adding tasks and marking them as completed", link: "todo.html" },
+    { name: "Rock Paper Scissors", desc: "A classic rock paper scissors game built with HTML, CSS, and JavaScript.", link: "rock-paper-scissors.html" }
 ];
 
 function showProjects() {
