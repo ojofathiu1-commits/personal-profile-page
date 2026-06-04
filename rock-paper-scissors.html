@@ -39,6 +39,7 @@
         background: rgba(255, 255, 255, 0.96);
         border: 2px solid rgba(25, 28, 38, 0.08);
         box-shadow: 0 24px 60px var(--shadow);
+        position: relative;
       }
 
       .title {
@@ -186,6 +187,7 @@
   </head>
   <body>
     <div class="page">
+      <button id="backBtn" class="back-btn" onclick="goBack(event)" aria-label="Back">← Back</button>
       <h1 class="title">Rock Paper Scissors</h1>
       <p class="subtitle">Tap a move to play against the computer.</p>
 
@@ -214,6 +216,29 @@
     </div>
 
     <script>
+      function goBack(e) {
+        if (e) e.preventDefault();
+        try {
+          if (history.length > 1) {
+            history.back();
+            return;
+          }
+        } catch (err) {}
+        // fallback: navigate to index and let index restore scroll if available
+        try { sessionStorage.removeItem('lastProject'); } catch (err) {}
+        window.location.href = 'index.html';
+      }
+
+      // style the back button (kept in JS so patch is small and localized)
+      (function() {
+        const s = document.createElement('style');
+        s.textContent = `
+          .back-btn { position: absolute; left: 18px; top: 18px; border: none; background: transparent; font-size: 16px; cursor: pointer; color: #191c26; }
+          .back-btn:hover { text-decoration: underline; }
+        `;
+        document.head.appendChild(s);
+      })();
+
       let score = JSON.parse(localStorage.getItem('score')) || {
         wins: 0,
         losses: 0,

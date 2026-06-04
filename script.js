@@ -32,7 +32,21 @@ function showProjects() {
 function openModal(index) {
     document.getElementById("modalTitle").textContent = projects[index].name;
     document.getElementById("modalDesc").textContent = projects[index].desc;
-    document.getElementById("modalLink").href = projects[index].link;
+    const modalLink = document.getElementById("modalLink");
+    modalLink.href = projects[index].link;
+    // open in the same tab and save current scroll position so the project page
+    // can navigate back to where the user clicked
+    modalLink.onclick = function(e) {
+        e.preventDefault();
+        try {
+            sessionStorage.setItem('lastProjectScroll', String(window.scrollY || window.pageYOffset || 0));
+            sessionStorage.setItem('lastProject', projects[index].link);
+        } catch (err) {
+            // ignore sessionStorage errors
+        }
+        window.location.href = projects[index].link;
+    };
+    modalLink.removeAttribute('target');
     document.getElementById("projectModal").style.display = "block";
 }
 
@@ -46,10 +60,23 @@ function openSocial(platform) {
     let urls = {
         twitter: "https://twitter.com",
         facebook: "https://facebook.com",
-        github: "https://github.com",
-        linkedin: "https://linkedin.com"
+        github: "https://github.com/ojofathiu1-commits",
+        linkedin: "https://www.linkedin.com/in/ojo-fathiu-6b034b3b7/"
     };
     window.open(urls[platform], "_blank");
 }
 
 showProjects();
+
+// If we have a saved scroll position (from opening a project), restore it when
+// index.html loads again. This is used when a project redirects back here.
+try {
+    const saved = sessionStorage.getItem('lastProjectScroll');
+    if (saved !== null) {
+        window.scrollTo(0, parseInt(saved, 10) || 0);
+        sessionStorage.removeItem('lastProjectScroll');
+        sessionStorage.removeItem('lastProject');
+    }
+} catch (err) {
+    // ignore
+}

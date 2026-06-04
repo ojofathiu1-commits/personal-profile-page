@@ -97,7 +97,7 @@
     </style>
 </head>
 <body>
-    <a href="index.html" class="back-button"><i class="fas fa-arrow-left"></i> Back</a>
+    <a href="#" class="back-button" onclick="goBack(event)"><i class="fas fa-arrow-left"></i> Back</a>
     <h1>My Note App</h1>
     <input type="text" class="note-input" id="noteInput" placeholder="Enter your note here...">
     <button onclick="addNote()">Add Note</button>
@@ -153,6 +153,13 @@
                 addNote();
             }
         });
+
+        function goBack(e) {
+            if (e) e.preventDefault();
+            try { if (history.length > 1) { history.back(); return; } } catch (err) {}
+            try { sessionStorage.removeItem('lastProject'); } catch (err) {}
+            window.location.href = 'index.html';
+        }
     </script>
 </body>
 </html>
